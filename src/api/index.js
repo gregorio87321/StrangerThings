@@ -25,20 +25,20 @@
  /**
   * This will make a call to the API for a preformed url (useful for previous and next buttons), and return the result
   */
+
+
  export async function registerUser(user) {
-    // const params = {
-    //     param1: value1,
-    //     param2: value2; 
-    // };
     const options = {
         method: 'POST',
-        user: {}
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user),
     };
     console.log(options)
    try {
      const response = await fetch(`${ BASE_URL }${API_REGISTER}`, options);
      const data = await response.json();
- 
      return data;
    } catch (error) {
      throw error;

@@ -5,17 +5,24 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     
+ 
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(`user name: ${username}`);
-        console.log(`password: ${password}`); 
+        console.log(`password: ${password}`);
+        const userData = {
+          user: {
+            username,
+            password,
+          },
+        };
         try {
-            const results = await registerUser({ username, password});
-            console.log(results)
-          } catch (error) {
-            console.error(error);
-          }
-    }
+          const results = await registerUser(userData);
+          console.log(results);
+        } catch (error) {
+          console.error(error);
+        }
+      };
     
     return (
      <div>
