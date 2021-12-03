@@ -32,7 +32,7 @@
     // };
     const options = {
         method: 'POST',
-        user,
+        user: {}
     };
     console.log(options)
    try {

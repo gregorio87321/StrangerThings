@@ -33,7 +33,7 @@ const Register = () => {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
            ></input>
-           <button type='submit'>Login</button>
+           <button type='submit'>Register</button>
         </form>
         {/* <button 
           onClick={(event) => {
