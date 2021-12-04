@@ -4,7 +4,7 @@
  * You need to replace YOUR_API_KEY in the string associated with KEY with your actual API key
  */
  
- const BASE_URL = 'https://strangers-things.herokuapp.com/api/2108-LSU-WEB-PT';
+ const BASE_URL = 'https://strangers-things.herokuapp.com/api/2108-LSU-RM-WEB-PT';
  const API_POST = '/posts'
  const API_REGISTER = '/users/register'
  

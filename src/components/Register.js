@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { registerUser } from "../api";
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
+
 
 const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    
+    const history = useHistory()
  
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -20,6 +21,7 @@ const Register = () => {
         try {
           const results = await registerUser(userData);
           const token = results.data.token
+          history.push(`/posts`)
           console.log('token', token)
           
           console.log(results);
