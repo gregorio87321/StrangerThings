@@ -18,6 +18,9 @@ const Register = () => {
         };
         try {
           const results = await registerUser(userData);
+          const token = results.data.token
+          console.log('token', token)
+          
           console.log(results);
         } catch (error) {
           console.error(error);
