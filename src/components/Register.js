@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../api";
+import { Link } from "react-router-dom"
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -45,6 +46,7 @@ const Register = () => {
            ></input>
            <button type='submit'>Register</button>
         </form>
+        <Link to="/Login">Already have an account? Log In</Link>
         {/* <button 
           onClick={(event) => {
           event.preventDefault()

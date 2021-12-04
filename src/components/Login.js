@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import {
-  Link
-  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // const API_REGISTER = 'https://strangers-things.herokuapp.com/api/2108-LSU-RM-WEB-PT/users/register'
 

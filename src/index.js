@@ -5,12 +5,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Login, Posts, Register } from "./components"
 
 const App = () => {
+  const [ token, setToken] = useState('');
+  const [ userData, setUserData ] = useState({});
+  const [ posts, setPosts ] = useState([])
+  
   return (
     <div>
     <h1> Stranger's Things </h1>
     
       <Route path="/login">
-        <Login />
+        <Login/>
       </Route>
       <Route path="/register">
         <Register />
