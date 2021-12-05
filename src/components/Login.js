@@ -1,16 +1,39 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { callApi } from "../api";
+
 
 // const API_REGISTER = 'https://strangers-things.herokuapp.com/api/2108-LSU-RM-WEB-PT/users/register'
 
-const Login = () => {
+const Login = (props) => {
+    const { setToken } = props
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory()
     
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        console.log(`user name: ${username}`);
-        console.log(`password: ${password}`);    
+      event.preventDefault();
+      const userData = {
+        user: {
+          username,
+          password,
+        },
+      };
+      try {
+          const { data } = await callApi({
+              url: '/users/login',
+              method: 'POST',
+              body: userData
+            });
+        const { token } = data
+        localStorage.setItem('token', JSON.stringify(token));
+        setToken(token)
+        history.push(`/posts`)
+        console.log('token', token)
+      
+      } catch (error) {
+        console.error(error);
+      }
     }
     
     return (

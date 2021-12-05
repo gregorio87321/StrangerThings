@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { registerUser } from "../api";
+import { callApi } from "../api";
 import { Link, useHistory } from "react-router-dom"
 
 
-const Register = () => {
+const Register = (props) => {
+    const { setToken } = props;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory()
  
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(`user name: ${username}`);
-        console.log(`password: ${password}`);
         const userData = {
           user: {
             username,
@@ -19,12 +18,16 @@ const Register = () => {
           },
         };
         try {
-          const results = await registerUser(userData);
-          const token = results.data.token
+            const { data } = await callApi({
+                url: '/users/register',
+                method: 'POST',
+                body: userData
+              });
+          const { token } = data
+          localStorage.setItem('token', JSON.stringify(token));
+          setToken(token)
           history.push(`/posts`)
           console.log('token', token)
-          
-          console.log(results);
         } catch (error) {
           console.error(error);
         }
