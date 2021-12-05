@@ -53,9 +53,9 @@ const App = () => {
   }, []);
 
   const logout = () => {
-    setToken(null);
-    setUserData(null);
-    localStorage.setItem("token", null);
+    // setToken(null);
+    // setUserData(null);
+    localStorage.removeItem("token");
     history.push(`/posts`);
   };
 
@@ -63,18 +63,20 @@ const App = () => {
     <div>
       <div>
         <h1> Stranger's Things </h1>
-        {!userData.username ? (
+        <>
+        {!token ? (
           <Link to="/login">Log In</Link>
         ) : (
           <button
             onClick={(event) => {
-              event.preventDefault();
+              // event.preventDefault();
               logout();
             }}
           >
             Log Out
           </button>
         )}
+        </>
         <Link style={{ marginLeft: "10px" }} to="/posts">
           Posts
         </Link>

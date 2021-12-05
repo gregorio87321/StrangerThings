@@ -1,9 +1,39 @@
 import React, { useState, useEffect } from "react";
 import NewPostForm from "./NewPostForm";
 
+const styles = {
+    searchContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      padding: '16px',
+      alignItems: 'center',
+    },
+    searchInput: {
+      margin: '0 16px',
+    },
+  };
+  
+  const postMatches = (post, searchTerm) => {
+    const searchTermLower = searchTerm.toLowerCase();
+    const {
+      description,
+      location,
+      title,
+      author: { username },
+    } = post;
+  
+    const toMatch = [description, location, title, username];
+  
+    for (const field of toMatch) {
+      if (field.toLowerCase().includes(searchTermLower)) {
+        return true;
+      }
+    }
+  };
+
 const Posts = (props) => {
   const { token, posts, userData } = props;
-
+  const [searchTerm, setSearchTerm] = useState('')
   const [showNewPostForm, setShowNewPostForm] = useState(false);
   const [newPosts, setNewPosts] = useState([...posts]);
 
@@ -12,9 +42,24 @@ const Posts = (props) => {
     setShowNewPostForm(false)
   }
 
+  const filteredPosts = posts.filter((post) => postMatches(post,searchTerm))
+
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Posts</h1>
+      <div style={styles.searchContainer}>
+        <h2>Posts</h2>
+        <input
+          style={styles.searchInput}
+          type='text'
+          placeholder='search for posts'
+          value={searchTerm}
+          onChange={(event) => {
+            console.log(event.target.value);
+            setSearchTerm(event.target.value);
+          }}
+        ></input>
+      </div>
+
       {userData.username && !showNewPostForm ? (
         <button
           onClick={(event) => {
@@ -28,7 +73,7 @@ const Posts = (props) => {
       {showNewPostForm ? (
         <NewPostForm token={token} setPosts={(posts) => addNewPosts(posts)} posts={posts} action="create" />
       ) : (
-        newPosts.map((post) => (
+        filteredPosts.map((post) => (
           <div key={post._id}>
             <h3>{post.title}</h3>
             <span>{post.description}</span>
