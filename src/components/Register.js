@@ -27,7 +27,6 @@ const Register = (props) => {
           localStorage.setItem('token', JSON.stringify(token));
           setToken(token)
           history.push(`/posts`)
-          console.log('token', token)
         } catch (error) {
           console.error(error);
         }

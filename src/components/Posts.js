@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import NewPostForm from "./NewPostForm";
 
 const styles = {
@@ -43,19 +44,19 @@ const Posts = (props) => {
   }
 
   const filteredPosts = posts.filter((post) => postMatches(post,searchTerm))
-
+  const history = useHistory()
+ 
   return (
     <div>
       <div style={styles.searchContainer}>
-        <h2>Posts</h2>
+        <h2 className="allPosts">Posts</h2>
         <input
           style={styles.searchInput}
           type='text'
           placeholder='search for posts'
           value={searchTerm}
           onChange={(event) => {
-            console.log(event.target.value);
-            setSearchTerm(event.target.value);
+           setSearchTerm(event.target.value);
           }}
         ></input>
       </div>
@@ -74,8 +75,9 @@ const Posts = (props) => {
         <NewPostForm token={token} setPosts={(posts) => addNewPosts(posts)} posts={posts} action="create" />
       ) : (
         filteredPosts.map((post) => (
-          <div key={post._id}>
-            <h3>{post.title}</h3>
+          <div  key={post._id}>
+            <h3 className="posts">{post.title}</h3>
+            
             <span>{post.description}</span>
             <br></br>
             <span>Price: {post.price}</span>
@@ -84,10 +86,13 @@ const Posts = (props) => {
             <br></br>
             <span>Location: {post.location}</span>
             <br></br>
-            <button
+            <button className="btn-info"
+            onClick={() => history.push(`/posts/${post._id}`)}> view post 
+                 </button>
+            
+            <button className="send_message btn-info"
               onClick={(event) => {
                 event.preventDefault();
-                console.log("sending message");
               }}
             >
               SEND MESSAGE

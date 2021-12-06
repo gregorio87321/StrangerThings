@@ -3,8 +3,6 @@ import { callApi } from '../api';
 import { useHistory, useParams } from 'react-router-dom';
 
 const NewPostForm = ({ token, setPosts, posts, action }) => {
-    console.log(token)
-    console.log(posts)
   const history = useHistory();
   const { postId } = useParams();
 
@@ -16,7 +14,7 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
     willDeliver: false,
   });
   const isEdit = action === 'edit';
-  const title = isEdit ? 'Edit this post' : 'Add a new post';
+  const title = isEdit ? 'Edit this post' : 'Add a New Post';
   const method = isEdit ? 'PATCH' : 'POST';
   const API_URL = isEdit ? `/posts/${postId}` : `/posts`;
 
@@ -66,9 +64,10 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
 
   return (
     <>
-      <h2>{title}</h2>
-      <form onSubmit={handleSubmit}>
-        <input
+      <h2 className="newPostHead">{title}</h2>
+      <div className="newPost">
+      <form className="newPost" onSubmit={handleSubmit}>
+        <input 
           type="text"
           placeholder="title"
           onChange={handlePostFieldChange('title')}
@@ -102,6 +101,7 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
         </label>
         <button>{title}</button>
       </form>
+      </div>
     </>
   );
 };

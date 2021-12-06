@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { Link, useHistory } from 'react-router-dom'
 import { callApi } from "../api";
 
-
-// const API_REGISTER = 'https://strangers-things.herokuapp.com/api/2108-LSU-RM-WEB-PT/users/register'
-
 const Login = (props) => {
     const { setToken } = props
     const [username, setUsername] = useState('');
