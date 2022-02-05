@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Login, Posts, Register, SinglePost } from "./components";
+import { Login, Posts, Register, SinglePost, EditPostForm } from "./components";
 import { useState, useEffect } from "react";
 import { callApi } from "./api";
 import { useHistory } from "react-router-dom";
@@ -95,7 +95,7 @@ const App = () => {
         <Route exact path="/posts">
           <Posts token={token} posts={posts} userData={userData} />
         </Route>
-        <Route path="/posts/:postId">
+        <Route exact path="/posts/:postId">
           <SinglePost
             posts={posts}
             token={token}
@@ -103,6 +103,7 @@ const App = () => {
             setPosts={setPosts}
           />
         </Route>
+      
       </Switch>
     </div>
   );
