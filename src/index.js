@@ -1,19 +1,11 @@
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Login, Posts, Register, SinglePost } from "./components";
 import { useState, useEffect } from "react";
 import { callApi } from "./api";
 import { useHistory } from "react-router-dom";
-
-
-
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -66,42 +58,51 @@ const App = () => {
   return (
     <div>
       <div>
-        <h1 className="title"> Stranger Things </h1>
+        <h1 className="title"> Stranger's Things </h1>
         <>
-        {!token ? (
-          <Link to="/login">Log In</Link>
-        ) : (
-          <button className="btn-primary"
-            onClick={(event) => {
-              // event.preventDefault();
-              logout();
-            }}
-          >
-            Log Out
-          </button>
-        )}
+          {!token ? (
+            <Link to="/login">Log In</Link>
+          ) : (
+            <button
+              className="btn-primary"
+              onClick={(event) => {
+                // event.preventDefault();
+                logout();
+              }}
+            >
+              Log Out
+            </button>
+          )}
         </>
-        { token ? 
-        <>
-        <h2 className="user_greeting"> Hello {userData.username}! </h2>
-        </> : ""}
+        {token ? (
+          <>
+            <h2 className="user_greeting"> Hello {userData.username}! </h2>
+          </>
+        ) : (
+          ""
+        )}
         <Link style={{ marginLeft: "10px" }} to="/posts">
           Posts
         </Link>
       </div>
-    <Switch>
-      <Route path="/login">
-        <Login action="login" setToken={setToken} />
-      </Route>
-      <Route path="/register">
-        <Register action="register" setToken={setToken} />
-      </Route>
-      <Route path="/posts">
-        <Posts token={token} posts={posts} userData={userData} />
-      </Route>
-      <Route path="/post/:postId">
-        <SinglePost posts={posts} token={token} userData={userData} setPosts={setPosts}/>
-      </Route>
+      <Switch>
+        <Route path="/login">
+          <Login action="login" setToken={setToken} />
+        </Route>
+        <Route path="/register">
+          <Register action="register" setToken={setToken} />
+        </Route>
+        <Route exact path="/posts">
+          <Posts token={token} posts={posts} userData={userData} />
+        </Route>
+        <Route path="/posts/:postId">
+          <SinglePost
+            posts={posts}
+            token={token}
+            userData={userData}
+            setPosts={setPosts}
+          />
+        </Route>
       </Switch>
     </div>
   );

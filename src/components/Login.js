@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom';
 import { callApi } from "../api";
 
 const Login = (props) => {
@@ -32,6 +32,8 @@ const Login = (props) => {
         console.error(error);
       }
     }
+
+    // console.log("action", action)
     
     return (
      <div>
