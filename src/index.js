@@ -15,6 +15,7 @@ const App = () => {
   const history = useHistory();
 
   const fetchUserData = async (token) => {
+    console.log(token)
     const { data } = await callApi({
       url: "/users/me",
       token,
@@ -33,8 +34,11 @@ const App = () => {
 
   useEffect(async () => {
     if (!token) {
-      setToken(localStorage.getItem("token"));
+      const newToken = JSON.parse(localStorage.getItem('token')) 
+      setToken(newToken);
+      console.log("token", localStorage.getItem('token'))
       return;
+
     }
     const data = await fetchUserData(token);
     if (data && data.username) {
@@ -103,7 +107,6 @@ const App = () => {
             setPosts={setPosts}
           />
         </Route>
-      
       </Switch>
     </div>
   );

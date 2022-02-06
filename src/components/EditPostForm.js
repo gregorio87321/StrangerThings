@@ -1,21 +1,16 @@
 import React, { useState } from "react";
-import { callApi } from "../api";
-import { useHistory, useParams } from "react-router-dom";
 
-
-const EditPostForm = ({editPost, setEditPost, onEdit}) => {
-
-
+const EditPostForm = ({ editPost, setEditPost, onEdit }) => {
   return (
     <>
-      <h2 className="newPostHead">edit post</h2>
+      <h2 className="newPostHead">Edit Post</h2>
       <div className="newPost">
         <form className="newPost" onSubmit={onEdit}>
           <input
             type="text"
             placeholder="title"
             onChange={(event) => {
-                setEditPost({...editPost, title:event.target.value})
+              setEditPost({ ...editPost, title: event.target.value });
             }}
             value={editPost.title}
           ></input>
@@ -23,7 +18,7 @@ const EditPostForm = ({editPost, setEditPost, onEdit}) => {
             type="text"
             placeholder="description"
             onChange={(event) => {
-                setEditPost({...editPost, description:event.target.value})
+              setEditPost({ ...editPost, description: event.target.value });
             }}
             value={editPost.description}
           ></input>
@@ -31,7 +26,7 @@ const EditPostForm = ({editPost, setEditPost, onEdit}) => {
             type="number"
             placeholder="price"
             onChange={(event) => {
-                setEditPost({...editPost, price:event.target.value})
+              setEditPost({ ...editPost, price: event.target.value });
             }}
             value={editPost.price}
           ></input>
@@ -39,7 +34,7 @@ const EditPostForm = ({editPost, setEditPost, onEdit}) => {
             type="text"
             placeholder="location"
             onChange={(event) => {
-                setEditPost({...editPost, location:event.target.value})
+              setEditPost({ ...editPost, location: event.target.value });
             }}
             value={editPost.location}
           ></input>
@@ -48,12 +43,12 @@ const EditPostForm = ({editPost, setEditPost, onEdit}) => {
             <input
               type="checkbox"
               onChange={(event) => {
-                setEditPost({...editPost, willDeliver:event.target.checked})
-            }}
+                setEditPost({ ...editPost, willDeliver: event.target.checked });
+              }}
               value={editPost.willDeliver}
             ></input>
           </label>
-          <button type="submit">edit post</button>
+          <button type="submit">Edit Post</button>
         </form>
       </div>
     </>
