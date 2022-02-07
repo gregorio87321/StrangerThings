@@ -85,6 +85,15 @@ const App = () => {
         ) : (
           ""
         )}
+        {token ?(
+          <>
+          <Link>
+            Profile
+            </Link>
+          </>
+        ) : ('')
+         
+        }
         <Link style={{ marginLeft: "10px" }} to="/posts">
           Posts
         </Link>
