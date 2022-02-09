@@ -2,7 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Login, Posts, Register, SinglePost, EditPostForm } from "./components";
+import {
+  Login,
+  Posts,
+  Register,
+  SinglePost,
+  EditPostForm,
+  Profile,
+} from "./components";
 import { useState, useEffect } from "react";
 import { callApi } from "./api";
 import { useHistory } from "react-router-dom";
@@ -15,7 +22,7 @@ const App = () => {
   const history = useHistory();
 
   const fetchUserData = async (token) => {
-    console.log(token)
+    console.log(token);
     const { data } = await callApi({
       url: "/users/me",
       token,
@@ -34,11 +41,10 @@ const App = () => {
 
   useEffect(async () => {
     if (!token) {
-      const newToken = JSON.parse(localStorage.getItem('token')) 
+      const newToken = JSON.parse(localStorage.getItem("token"));
       setToken(newToken);
-      console.log("token", localStorage.getItem('token'))
+      console.log("token", localStorage.getItem("token"));
       return;
-
     }
     const data = await fetchUserData(token);
     if (data && data.username) {
@@ -85,15 +91,13 @@ const App = () => {
         ) : (
           ""
         )}
-        {token ?(
+        {token ? (
           <>
-          <Link>
-            Profile
-            </Link>
+            <Link to="/posts/profile/:postId">Profile</Link>
           </>
-        ) : ('')
-         
-        }
+        ) : (
+          ""
+        )}
         <Link style={{ marginLeft: "10px" }} to="/posts">
           Posts
         </Link>
@@ -115,6 +119,9 @@ const App = () => {
             userData={userData}
             setPosts={setPosts}
           />
+        </Route>
+        <Route path="/posts/profile/:postId">
+          <Profile userData={userData} />
         </Route>
       </Switch>
     </div>

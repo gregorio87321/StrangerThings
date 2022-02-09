@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const EditPostForm = ({ editPost, setEditPost, onEdit }) => {
   return (
     <>
-      <h2 className="newPostHead">Edit Post</h2>
+      <h2 style={{ display: "flex", justifyContent: "center" }}>Edit Post</h2>
       <div className="newPost">
         <form className="newPost" onSubmit={onEdit}>
           <input

@@ -45,6 +45,8 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
     // history.push("/posts");
   };
 
+  //  Post method for messages goes here
+
   return (
     <>
       {post ? (
