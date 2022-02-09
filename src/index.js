@@ -31,6 +31,7 @@ const App = () => {
   };
 
   const fetchPosts = async () => {
+    
     const {
       data: { posts },
     } = await callApi({
@@ -54,8 +55,9 @@ const App = () => {
 
   useEffect(async () => {
     const posts = await fetchPosts();
+    console.log(posts)
     setPosts(posts);
-  }, []);
+  }, [posts]);
 
   const logout = async () => {
     // setToken(null);

@@ -7,6 +7,7 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
   const { postId } = useParams();
 
   const [newPost, setNewPost] = useState({
+    
     title: '',
     description: '',
     price: 0,
@@ -19,6 +20,8 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
   const API_URL = isEdit ? `/posts/${postId}` : `/posts`;
 
   const handleSubmit = async (event) => {
+    console.log("clicked", newPost)
+    
     event.preventDefault();
     try {
       const {
@@ -39,6 +42,7 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
       });
 
       if (isEdit) {
+        console.log(setPosts)
         //* grab existing posts other than the one ive edited
         //* add in the post ive edited
         const filteredPosts = posts.filter((post) => post._id !== postId);
@@ -61,6 +65,7 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
       setNewPost({ ...newPost, [property]: event.target.value });
     }
   };
+
 
   return (
     <>
