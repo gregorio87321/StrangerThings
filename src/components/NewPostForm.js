@@ -42,7 +42,7 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
       });
 
       if (isEdit) {
-        console.log(setPosts)
+        
         //* grab existing posts other than the one ive edited
         //* add in the post ive edited
         const filteredPosts = posts.filter((post) => post._id !== postId);

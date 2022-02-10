@@ -1,9 +1,16 @@
-import React, { useState, Link } from "react";
+import React, { useState, Link, useEffect} from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { callApi } from "../api";
+import { Message } from ".";
 
-const Profile = ({ userData }) => {
+const Profile = ({ userData, setUserData, fetchUserData, token }) => {
   const [message, setMessage] = useState("");
+  useEffect(async () => {
+    const data = await fetchUserData(token);
+    if (data && data.username) {
+      setUserData(data);
+    }
+  }, []);
   console.log(userData);
   if (!userData.posts) {
     return (
@@ -17,19 +24,21 @@ const Profile = ({ userData }) => {
     <div>
       {/* <Link to="">My Messages</Link> */}
       <>
-      <h1 style={{ display: "flex", justifyContent: "center" }}>
+       <h1 style={{ display: "flex", justifyContent: "center" }}>
           {" "}
           My Profile{" "}
         </h1>
+        
         <hr></hr>
         {/* <h2 style={{ display: "flex", justifyContent: "center" }}>
           {"Welcome back "}
           {userData.username}!{" "}
         </h2> */}
+        <h2>My Posts</h2>
         {userData.posts &&
           activePost.map((post) => (
             <div key={post._id}>
-              <h2>My Posts</h2>
+              
               <h3 className="posts">{post.title}</h3>
               <span>{post.description}</span>
               <br></br>
@@ -39,10 +48,14 @@ const Profile = ({ userData }) => {
               <br></br>
               <span>Location: {post.location}</span>
               <br></br>
+              <span>Message: {post.message}</span>
+              
+              <br></br>
+              {/* <Message
+                
+              /> */}
             </div>
           ))}
-       
-       
       </>
     </div>
   );

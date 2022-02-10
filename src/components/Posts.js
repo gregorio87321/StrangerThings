@@ -33,10 +33,15 @@ const postMatches = (post, searchTerm) => {
 };
 
 const Posts = (props) => {
-  const { token, posts, userData } = props;
+  const { token, posts, userData, fetchPosts, setPosts } = props;
   const [searchTerm, setSearchTerm] = useState("");
   const [showNewPostForm, setShowNewPostForm] = useState(false);
   const [newPosts, setNewPosts] = useState([...posts]);
+  useEffect(async () => {
+    const posts = await fetchPosts();
+
+    setPosts(posts);
+  }, []);
 
   const addNewPosts = (newPosts) => {
     setNewPosts(newPosts);
@@ -107,17 +112,6 @@ const Posts = (props) => {
             >
               SEND MESSAGE
             </button>
-            {/* {userData.username === post.author.username ?
-                <button
-                onClick={(event) => {
-                  event.preventDefault();
-                  console.log("sending message");
-                }}
-              >
-                EDIT MESSAGE
-              </button>   
-              : null
-        } */}
           </div>
         ))
       )}

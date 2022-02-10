@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { callApi } from "../api";
 import { EditPostForm } from ".";
+import { Message } from ".";
 
 const SinglePost = ({ posts, token, setPosts, userData }) => {
   const { postId } = useParams();
@@ -10,11 +11,12 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
   const newPosts = posts.filter((post) => postId !== post._id);
 
   const [editPost, setEditPost] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     price: 0,
-    location: '',
+    location: "",
     willDeliver: false,
+    message: "",
   });
 
   const onDelete = (event) => {
@@ -35,13 +37,13 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
       url: `/posts/${postId}`,
       token,
       body: {
-       post: editPost,
-      }
+        post: editPost,
+      },
     });
-    const postData = data.post
+    const postData = data.post;
     newPosts.push(postData);
-    setPosts(newPosts)
-    
+    setPosts(newPosts);
+
     // history.push("/posts");
   };
 
@@ -56,6 +58,7 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
           <p>Price: {post.price}</p>
           <p>Location: {post.location}</p>
           <p>Delivers: {post.willDeliver ? "Yes" : "No"}</p>
+
           {userData.username === post.author.username ? (
             <button onClick={onDelete}>DELETE POST</button>
           ) : null}
@@ -65,7 +68,9 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
               setEditPost={setEditPost}
               onEdit={onEdit}
             />
-          ) : null}
+          ) : (
+            <Message token={token} posts={posts} />
+          )}
         </div>
       ) : (
         ""

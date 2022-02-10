@@ -31,7 +31,6 @@ const App = () => {
   };
 
   const fetchPosts = async () => {
-    
     const {
       data: { posts },
     } = await callApi({
@@ -57,7 +56,7 @@ const App = () => {
     const posts = await fetchPosts();
     console.log(posts)
     setPosts(posts);
-  }, [posts]);
+  }, []);
 
   const logout = async () => {
     // setToken(null);
@@ -112,7 +111,13 @@ const App = () => {
           <Register action="register" setToken={setToken} />
         </Route>
         <Route exact path="/posts">
-          <Posts token={token} posts={posts} userData={userData} />
+          <Posts
+            token={token}
+            posts={posts}
+            userData={userData}
+            setPosts={setPosts}
+            fetchPosts={fetchPosts}
+          />
         </Route>
         <Route exact path="/posts/:postId">
           <SinglePost
@@ -123,7 +128,7 @@ const App = () => {
           />
         </Route>
         <Route path="/posts/profile/:postId">
-          <Profile userData={userData} />
+          <Profile userData={userData} fetchUserData={fetchUserData} setUserData={setUserData} token={token} />
         </Route>
       </Switch>
     </div>
