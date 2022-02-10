@@ -54,7 +54,7 @@ const App = () => {
 
   useEffect(async () => {
     const posts = await fetchPosts();
-    console.log(posts)
+    console.log(posts);
     setPosts(posts);
   }, []);
 
@@ -128,7 +128,13 @@ const App = () => {
           />
         </Route>
         <Route path="/posts/profile/:postId">
-          <Profile userData={userData} fetchUserData={fetchUserData} setUserData={setUserData} token={token} />
+          <Profile
+            userData={userData}
+            fetchUserData={fetchUserData}
+            setUserData={setUserData}
+            token={token}
+            posts={posts}
+          />
         </Route>
       </Switch>
     </div>

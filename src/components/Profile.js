@@ -1,10 +1,9 @@
-import React, { useState, Link, useEffect} from "react";
+import React, { useState, Link, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { callApi } from "../api";
 import { Message } from ".";
 
-const Profile = ({ userData, setUserData, fetchUserData, token }) => {
-  const [message, setMessage] = useState("");
+const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
   useEffect(async () => {
     const data = await fetchUserData(token);
     if (data && data.username) {
@@ -24,11 +23,10 @@ const Profile = ({ userData, setUserData, fetchUserData, token }) => {
     <div>
       {/* <Link to="">My Messages</Link> */}
       <>
-       <h1 style={{ display: "flex", justifyContent: "center" }}>
-          {" "}
-          My Profile{" "}
+        <h1 style={{ display: "flex", justifyContent: "center" }}>
+          My Profile
         </h1>
-        
+
         <hr></hr>
         {/* <h2 style={{ display: "flex", justifyContent: "center" }}>
           {"Welcome back "}
@@ -38,7 +36,6 @@ const Profile = ({ userData, setUserData, fetchUserData, token }) => {
         {userData.posts &&
           activePost.map((post) => (
             <div key={post._id}>
-              
               <h3 className="posts">{post.title}</h3>
               <span>{post.description}</span>
               <br></br>
@@ -48,12 +45,12 @@ const Profile = ({ userData, setUserData, fetchUserData, token }) => {
               <br></br>
               <span>Location: {post.location}</span>
               <br></br>
-              <span>Message: {post.message}</span>
-              
-              <br></br>
-              {/* <Message
-                
-              /> */}
+              {post.messages.length ?
+                post.messages.map((message) => (
+                  <p key={message._id}>
+                    Message from {message.fromUser.username}: {message.content}
+                  </p> 
+                )) : null}
             </div>
           ))}
       </>
