@@ -45,12 +45,15 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
               <br></br>
               <span>Location: {post.location}</span>
               <br></br>
-              {post.messages.length ?
-                post.messages.map((message) => (
-                  <p key={message._id}>
-                    Message from {message.fromUser.username}: {message.content}
-                  </p> 
-                )) : null}
+              <br></br>
+              {post.messages.length
+                ? post.messages.map((message) => (
+                    <p key={message._id}>
+                      Message from {message.fromUser.username}:{" "}
+                      {message.content}
+                    </p>
+                  ))
+                : null}
             </div>
           ))}
       </>

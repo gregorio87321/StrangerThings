@@ -63,7 +63,6 @@ const App = () => {
     // setUserData(null);
     localStorage.removeItem("token");
     history.push(`/posts`);
-    window.location.reload(false);
   };
 
   return (

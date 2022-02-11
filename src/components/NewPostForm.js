@@ -1,27 +1,26 @@
-import React, { useState } from 'react';
-import { callApi } from '../api';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useState } from "react";
+import { callApi } from "../api";
+import { useHistory, useParams } from "react-router-dom";
 
 const NewPostForm = ({ token, setPosts, posts, action }) => {
   const history = useHistory();
   const { postId } = useParams();
 
   const [newPost, setNewPost] = useState({
-    
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     price: 0,
-    location: '',
+    location: "",
     willDeliver: false,
   });
-  const isEdit = action === 'edit';
-  const title = isEdit ? 'Edit this post' : 'Add a New Post';
-  const method = isEdit ? 'PATCH' : 'POST';
+  const isEdit = action === "edit";
+  const title = isEdit ? "Edit this post" : "Add a New Post";
+  const method = isEdit ? "PATCH" : "POST";
   const API_URL = isEdit ? `/posts/${postId}` : `/posts`;
 
   const handleSubmit = async (event) => {
-    console.log("clicked", newPost)
-    
+    console.log("clicked", newPost);
+
     event.preventDefault();
     try {
       const {
@@ -42,7 +41,6 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
       });
 
       if (isEdit) {
-        
         //* grab existing posts other than the one ive edited
         //* add in the post ive edited
         const filteredPosts = posts.filter((post) => post._id !== postId);
@@ -50,62 +48,62 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
       } else {
         //* Otherwise I am creating a post, so just take my old posts and add this new one to the bottom of the list
         setPosts([...posts, post]);
+        console.log(posts);
       }
       //* No matter what send users to the /posts page when we are done
-      history.push('/posts');
+      history.push(`/posts/${postId}`);
     } catch (error) {
-      console.error('error adding a post: ', error);
-    }
-  };
+      console.error("error adding a post: ", error);
+    } 
+  } ;
 
   const handlePostFieldChange = (property) => (event) => {
-    if (property === 'willDeliver') {
+    if (property === "willDeliver") {
       setNewPost({ ...newPost, [property]: event.target.checked });
     } else {
       setNewPost({ ...newPost, [property]: event.target.value });
     }
   };
 
-
   return (
     <>
       <h2 className="newPostHead">{title}</h2>
       <div className="newPost">
-      <form className="newPost" onSubmit={handleSubmit}>
-        <input 
-          type="text"
-          placeholder="title"
-          onChange={handlePostFieldChange('title')}
-          value={newPost.title}
-        ></input>
-        <input
-          type="text"
-          placeholder="description"
-          onChange={handlePostFieldChange('description')}
-          value={newPost.description}
-        ></input>
-        <input
-          type="number"
-          placeholder="price"
-          onChange={handlePostFieldChange('price')}
-          value={newPost.price}
-        ></input>
-        <input
-          type="text"
-          placeholder="location"
-          onChange={handlePostFieldChange('location')}
-          value={newPost.location}
-        ></input>
-        <label>
-          Deliver ?
+        <form className="newPost" onSubmit={handleSubmit}>
           <input
-            type="checkbox"
-            onChange={handlePostFieldChange('willDeliver')}
-            value={newPost.willDeliver}
+            type="text"
+            placeholder="title"
+            onChange={handlePostFieldChange("title")}
+            value={newPost.title}
           ></input>
-        </label>
-        <button>{title}</button>
-      </form>
+          <input
+            type="text"
+            placeholder="description"
+            onChange={handlePostFieldChange("description")}
+            value={newPost.description}
+          ></input>
+          <input
+            type="number"
+            placeholder="price"
+            onChange={handlePostFieldChange("price")}
+            value={newPost.price}
+          ></input>
+          <input
+            type="text"
+            placeholder="location"
+            onChange={handlePostFieldChange("location")}
+            value={newPost.location}
+          ></input>
+          <label>
+            Deliver ?
+            <input
+              type="checkbox"
+              onChange={handlePostFieldChange("willDeliver")}
+              value={newPost.willDeliver}
+            ></input>
+          </label>
+          <button>{title}</button>
+        </form>
       </div>
     </>
   );
