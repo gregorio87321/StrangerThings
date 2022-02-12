@@ -54,8 +54,25 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                     </p>
                   ))
                 : null}
+              <hr></hr>
             </div>
           ))}
+        <div>
+          <h2>Posts I'm Interested in</h2>
+          {userData.messages
+            ? userData.messages.map((message) => (
+                <div key={message._id}>
+                  <h3 className="messages"></h3>
+                  <p>{message.post.title}</p>
+                  <p>{message.fromUser.username}</p>
+                  <p>{message.content}</p>
+
+
+                  <br></br>
+                </div>
+              ))
+            : null}
+        </div>
       </>
     </div>
   );

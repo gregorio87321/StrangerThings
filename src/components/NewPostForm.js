@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { callApi } from "../api";
 import { useHistory, useParams } from "react-router-dom";
+import Posts from "./Posts"
 
-const NewPostForm = ({ token, setPosts, posts, action }) => {
+
+const NewPostForm = ({ token, setPosts, posts, action, setShowNewPostForm  }) => {
   const history = useHistory();
   const { postId } = useParams();
 
@@ -51,7 +53,8 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
         console.log(posts);
       }
       //* No matter what send users to the /posts page when we are done
-      history.push(`/posts/${postId}`);
+      // history.push(`/posts/${postId}`);
+      setShowNewPostForm(false);
     } catch (error) {
       console.error("error adding a post: ", error);
     } 

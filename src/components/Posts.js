@@ -36,17 +36,17 @@ const Posts = (props) => {
   const { token, posts, userData, fetchPosts, setPosts } = props;
   const [searchTerm, setSearchTerm] = useState("");
   const [showNewPostForm, setShowNewPostForm] = useState(false);
-  const [newPosts, setNewPosts] = useState([...posts]);
+  // const [newPosts, setNewPosts] = useState([...posts]);
   useEffect(async () => {
     const posts = await fetchPosts();
 
     setPosts(posts);
   }, []);
 
-  const addNewPosts = (newPosts) => {
-    setNewPosts(newPosts);
-    setShowNewPostForm(false);
-  };
+  // const addNewPosts = (newPosts) => {
+  //   setNewPosts(newPosts);
+  //   setShowNewPostForm(false);
+  // };
 
   const filteredPosts = posts.filter((post) => postMatches(post, searchTerm));
   const history = useHistory();
@@ -79,9 +79,11 @@ const Posts = (props) => {
       {showNewPostForm ? (
         <NewPostForm
           token={token}
-          setPosts={(posts) => addNewPosts(posts)}
+          setPosts={setPosts}
           posts={posts}
           action="create"
+          setShowNewPostForm={setShowNewPostForm}
+
         />
       ) : (
         filteredPosts.map((post) => (

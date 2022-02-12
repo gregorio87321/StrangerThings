@@ -59,8 +59,8 @@ const App = () => {
   }, []);
 
   const logout = async () => {
-    // setToken(null);
-    // setUserData(null);
+    setToken("");
+    setUserData({});
     localStorage.removeItem("token");
     history.push(`/posts`);
   };
@@ -76,7 +76,7 @@ const App = () => {
             <button
               className="btn-primary"
               onClick={(event) => {
-                // event.preventDefault();
+                event.preventDefault();
                 logout();
               }}
             >
