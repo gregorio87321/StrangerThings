@@ -63,9 +63,9 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
             ? userData.messages.map((message) => (
                 <div key={message._id}>
                   <h3 className="messages"></h3>
-                  <p>{message.post.title}</p>
-                  <p>{message.fromUser.username}</p>
-                  <p>{message.content}</p>
+                  <p>Title: {message.post.title}</p>
+                  <p>From User: {message.fromUser.username}</p>
+                  <p>Content: {message.content}</p>
 
 
                   <br></br>
