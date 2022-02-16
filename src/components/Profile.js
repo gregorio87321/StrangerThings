@@ -58,6 +58,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
             </div>
           ))}
         <div>
+          <br></br>
           <h2>Posts I'm Interested in</h2>
           {userData.messages
             ? userData.messages.map((message) => (
@@ -66,7 +67,6 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                   <p>Title: {message.post.title}</p>
                   <p>From User: {message.fromUser.username}</p>
                   <p>Content: {message.content}</p>
-
 
                   <br></br>
                 </div>

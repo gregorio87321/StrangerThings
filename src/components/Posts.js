@@ -83,7 +83,6 @@ const Posts = (props) => {
           posts={posts}
           action="create"
           setShowNewPostForm={setShowNewPostForm}
-
         />
       ) : (
         filteredPosts.map((post) => (

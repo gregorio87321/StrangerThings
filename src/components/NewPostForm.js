@@ -53,7 +53,7 @@ const NewPostForm = ({ token, setPosts, posts, action, setShowNewPostForm  }) =>
         console.log(posts);
       }
       //* No matter what send users to the /posts page when we are done
-      // history.push(`/posts/${postId}`);
+     
       setShowNewPostForm(false);
     } catch (error) {
       console.error("error adding a post: ", error);
