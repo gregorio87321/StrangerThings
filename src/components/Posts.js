@@ -105,14 +105,6 @@ const Posts = (props) => {
               view post
             </button>
 
-            <button
-              className="send_message btn-info"
-              onClick={(event) => {
-                event.preventDefault();
-              }}
-            >
-              SEND MESSAGE
-            </button>
           </div>
         ))
       )}

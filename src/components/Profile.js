@@ -1,9 +1,14 @@
 import React, { useState, Link, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { callApi } from "../api";
-import { Message } from ".";
+import { Message, Posts } from ".";
 
 const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
+  // do I need this?
+  // const { postId } = useParams();
+  // const post = posts.find((post) => postId === post._id);
+  const history = useHistory();
+
   useEffect(async () => {
     const data = await fetchUserData(token);
     if (data && data.username) {
@@ -19,6 +24,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
     );
   }
   const activePost = userData.posts.filter((post) => post.active);
+
   return (
     <div>
       {/* <Link to="">My Messages</Link> */}
@@ -46,6 +52,13 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
               <span>Location: {post.location}</span>
               <br></br>
               <br></br>
+              <button
+                className="btn-info"
+                onClick={() => history.push(`/posts/${post._id}`)}
+              >
+                {" "}
+                view post
+              </button>
               {post.messages.length
                 ? post.messages.map((message) => (
                     <p key={message._id}>
@@ -59,7 +72,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
           ))}
         <div>
           <br></br>
-          <h2>Posts I'm Interested in</h2>
+          <h2>My Messages</h2>
           {userData.messages
             ? userData.messages.map((message) => (
                 <div key={message._id}>
@@ -67,6 +80,13 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                   <p>Title: {message.post.title}</p>
                   <p>From User: {message.fromUser.username}</p>
                   <p>Content: {message.content}</p>
+                  <button
+                    className="btn-info"
+                    onClick={() => history.push(`/posts/${message.post._id}`)}
+                  >
+                    {" "}
+                    view post
+                  </button>
 
                   <br></br>
                 </div>

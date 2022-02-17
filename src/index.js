@@ -93,7 +93,7 @@ const App = () => {
         )}
         {token ? (
           <>
-            <Link to="/posts/profile/:postId">Profile</Link>
+            <Link to="/profile">Profile</Link>
           </>
         ) : (
           ""
@@ -126,13 +126,14 @@ const App = () => {
             setPosts={setPosts}
           />
         </Route>
-        <Route path="/posts/profile/:postId">
+        <Route path="/profile">
           <Profile
             userData={userData}
             fetchUserData={fetchUserData}
             setUserData={setUserData}
             token={token}
             posts={posts}
+            
           />
         </Route>
       </Switch>
