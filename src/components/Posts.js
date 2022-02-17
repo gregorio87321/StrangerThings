@@ -53,9 +53,9 @@ const Posts = (props) => {
 
   return (
     <div>
-      <div style={styles.searchContainer}>
-        <h2 className="allPosts">Posts</h2>
-        <input
+      <div className="postTitle"style={styles.searchContainer}>
+        <h2>Posts</h2>
+        <input className="searchBar"
           style={styles.searchInput}
           type="text"
           placeholder="search for posts"
@@ -86,17 +86,17 @@ const Posts = (props) => {
         />
       ) : (
         filteredPosts.map((post) => (
-          <div key={post._id}>
-            <h3 className="posts">{post.title}</h3>
+          <div className="card" key={post._id}>
+             <h2 >{post.title}</h2>
 
-            <span>{post.description}</span>
-            <br></br>
-            <span>Price: {post.price}</span>
-            <br></br>
-            <span>Seller: {post.author.username}</span>
-            <br></br>
-            <span>Location: {post.location}</span>
-            <br></br>
+            <span className="card-header">{post.description}</span>
+            {/* <br></br> */}
+            <span className="card-header">Price: {post.price}</span>
+            {/* <br></br> */}
+            <span className="card-header">Seller: {post.author.username}</span>
+            {/* <br></br> */}
+            <span className="card-header">Location: {post.location}</span>
+            {/* <br></br> */}
             <button
               className="btn-info"
               onClick={() => history.push(`/posts/${post._id}`)}
@@ -104,7 +104,7 @@ const Posts = (props) => {
               {" "}
               view post
             </button>
-
+          
           </div>
         ))
       )}

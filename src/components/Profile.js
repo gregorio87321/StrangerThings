@@ -42,7 +42,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
         {userData.posts &&
           activePost.map((post) => (
             <div key={post._id}>
-              <h3 className="posts">{post.title}</h3>
+              <h3 className="card">{post.title}</h3>
               <span>{post.description}</span>
               <br></br>
               <span>Price: {post.price}</span>

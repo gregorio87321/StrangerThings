@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
+body {
+    font-family: 'Muli', sans-serif;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+    font-size: 20px;
+    padding: 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    background-color: blueviolet;
+    
+    
+  }
+  
+
 .title {
     display: flex;
     flex-direction: row;
@@ -23,34 +38,24 @@
     
 }
 
-  .posts {
+  .card {
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 40px;
     border-bottom: black solid 3px;
+    width: 450px;
 } 
 
 .user_greeting {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center; */
     
     height: 40px;
     align-items: center;
 }
 
-body {
-    font-family: 'Muli', sans-serif;
-    color: rgba(0, 0, 0, 0.8);
-    font-weight: 400;
-    line-height: 1.58;
-    letter-spacing: -.003em;
-    font-size: 20px;
-    padding: 50px;
-    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
-    background-color: blueviolet;
-    
-    
-  }
-  
+
   h1 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
@@ -64,8 +69,9 @@ body {
 
   .allPosts{
       display: flex;
-      flex-direction: column;
+      /* flex-direction: column; */
       font-family: Verdana, Geneva, Tahoma, sans-serif;
+      justify-content: left;
   } 
 
   .send_message.btn-info {
@@ -78,6 +84,10 @@ body {
       padding: 20px;
   }
 
+  .btn-info {
+      width:85px
+  }
+
   /* .newPostHead {
       display: flex;
       justify-content: center;
@@ -86,3 +96,13 @@ body {
      
   } */
 
+  .searchBar {
+      width: 600px;
+  }
+
+  .postTitle {
+      font-size: medium;
+      display: flex;
+      justify-items: center;
+
+  }
