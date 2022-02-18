@@ -93,7 +93,7 @@ const Posts = (props) => {
       ) : (
         filteredPosts.map((post) => (
           <div className="card" key={post._id}>
-             <h2 >{post.title}</h2>
+             <h2>{post.title}</h2>
 
             <span className="card-text">{post.description}</span>
             {/* <br></br> */}
@@ -108,7 +108,7 @@ const Posts = (props) => {
               onClick={() => history.push(`/posts/${post._id}`)}
             >
               {" "}
-              view post
+              view
             </button>
           
           </div>

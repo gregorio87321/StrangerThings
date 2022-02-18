@@ -63,7 +63,7 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
 
           {userData.username === post.author.username ? (
             <button className="deleteBtn" onClick={onDelete}>
-              DELETE
+              Delete
             </button>
           ) : null}
            {/* {userData.username === post.author.username ? (

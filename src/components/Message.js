@@ -24,17 +24,21 @@ const Message = ({ token, posts }) => {
   };
 
   return (
-    <>
-      <label>Send a Message to this User</label>
-      <input
+    <>  
+    <div>
+      <label className="messageTitle">Send a Message to this User</label>
+      </div>
+      <div>
+      <input className="messageInput"
         type="text"
-        placeholder="Send a Message"
+        placeholder="Message:"
         value={newMessage}
         onChange={(event) => setNewMessage(event.target.value)}
       ></input>
       <button className="messageBtn" type="button" onClick={onMessage}>
         Send 
       </button>
+      </div>
     </>
   );
 };

@@ -13,6 +13,7 @@ import {
 import { useState, useEffect } from "react";
 import { callApi } from "./api";
 import { useHistory } from "react-router-dom";
+import "./style.css" 
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -68,7 +69,8 @@ const App = () => {
   return (
     <div>
       <div>
-        <h1 className="title"> Stranger's Things </h1>
+
+        <h1 class="font-effect-shadow-multiple"> Stranger's Things </h1>
         <>
           {!token ? (
             <Link to="/login">Log In</Link>

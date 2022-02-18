@@ -59,7 +59,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                 onClick={() => history.push(`/posts/${post._id}`)}
               >
                 {" "}
-                view post
+                view 
               </button>
 
               {post.messages.length
@@ -88,7 +88,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                     onClick={() => history.push(`/posts/${message.post._id}`)}
                   >
                     {" "}
-                    view post
+                    view 
                   </button>
 
                   <br></br>
