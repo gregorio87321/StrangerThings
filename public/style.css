@@ -85,6 +85,13 @@ h1 {
 .btn-info {
   width: 85px;
 }
+.messageBtn {
+  width: 85px;
+}
+
+.deleteBtn {
+  width: 85px;
+}
 
 /* .newPostHead {
       display: flex;

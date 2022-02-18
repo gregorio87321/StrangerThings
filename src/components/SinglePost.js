@@ -52,29 +52,44 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
   return (
     <>
       {post ? (
-        <div>
+        <div className="card">
           <h3>{post.title}</h3>
           <p>Posted by: {post.author.username}</p>
-          <p>Price: {post.price}</p>
-          <p>Location: {post.location}</p>
-          <p>Delivers: {post.willDeliver ? "Yes" : "No"}</p>
+          <p className="card-header">Price: {post.price}</p>
+          <p className="card-header">Location: {post.location}</p>
+          <p className="card-header">
+            Delivers: {post.willDeliver ? "Yes" : "No"}
+          </p>
 
           {userData.username === post.author.username ? (
-            <button onClick={onDelete}>DELETE POST</button>
+            <button className="deleteBtn" onClick={onDelete}>
+              DELETE
+            </button>
           ) : null}
-          {userData.username === post.author.username ? (
-            <EditPostForm
-              editPost={editPost}
-              setEditPost={setEditPost}
-              onEdit={onEdit}
-            />
-          ) : (
-            <Message token={token} posts={posts} />
-          )}
+           {/* {userData.username === post.author.username ? (
+        <EditPostForm
+          editPost={editPost}
+          setEditPost={setEditPost}
+          onEdit={onEdit}
+        />
+      ) : (
+        <Message token={token} posts={posts} />
+      )} */}
         </div>
       ) : (
         ""
       )}
+      {/* fix this so the edit and send message are outside of of card div, and refreshes without error */}
+               {post && userData.username === post.author.username ? (
+        <EditPostForm
+          editPost={editPost}
+          setEditPost={setEditPost}
+          onEdit={onEdit}
+        />
+      ) : (
+        <Message token={token} posts={posts} />
+      )}
+     
     </>
   );
 };

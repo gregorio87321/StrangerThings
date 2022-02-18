@@ -28,11 +28,12 @@ const Message = ({ token, posts }) => {
       <label>Send a Message to this User</label>
       <input
         type="text"
+        placeholder="Send a Message"
         value={newMessage}
         onChange={(event) => setNewMessage(event.target.value)}
       ></input>
-      <button type="button" onClick={onMessage}>
-        Send Message
+      <button className="messageBtn" type="button" onClick={onMessage}>
+        Send 
       </button>
     </>
   );

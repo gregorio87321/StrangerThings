@@ -41,16 +41,18 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
         <h2>My Posts</h2>
         {userData.posts &&
           activePost.map((post) => (
-            <div key={post._id}>
-              <h3 className="card">{post.title}</h3>
-              <span>{post.description}</span>
-              <br></br>
-              <span>Price: {post.price}</span>
-              <br></br>
-              <span>Seller: {post.author.username}</span>
-              <br></br>
-              <span>Location: {post.location}</span>
-              <br></br>
+            <div className="card" key={post._id}>
+              <h2>{post.title}</h2>
+              <span className="card-text">{post.description}</span>
+
+              <span className="card-header">Price: {post.price}</span>
+
+              <span className="card-header">
+                Seller: {post.author.username}
+              </span>
+
+              <span className="card-header">Location: {post.location}</span>
+
               <br></br>
               <button
                 className="btn-info"
@@ -59,6 +61,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                 {" "}
                 view post
               </button>
+
               {post.messages.length
                 ? post.messages.map((message) => (
                     <p key={message._id}>
@@ -67,7 +70,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                     </p>
                   ))
                 : null}
-              <hr></hr>
+              {/* <hr></hr> */}
             </div>
           ))}
         <div>
