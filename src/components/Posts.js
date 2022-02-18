@@ -61,7 +61,7 @@ const Posts = (props) => {
         <input className="searchBar"
           // style={styles.searchInput}
           type="text"
-          placeholder="search for posts"
+          placeholder="search for post:"
           value={searchTerm}
           onChange={(event) => {
             setSearchTerm(event.target.value);
@@ -93,8 +93,8 @@ const Posts = (props) => {
       ) : (
         filteredPosts.map((post) => (
           <div className="card" key={post._id}>
-             <h2>{post.title}</h2>
-
+             <h2 className="cardTitle">{post.title}</h2>
+               
             <span className="card-text">{post.description}</span>
             {/* <br></br> */}
             <span className="card-header">Price: {post.price}</span>

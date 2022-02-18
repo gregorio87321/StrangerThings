@@ -35,20 +35,20 @@ const Register = (props) => {
     return (
      <div>
         <h1 style={{textAlign: 'center'}}>Register</h1>
-        <form onSubmit={handleSubmit}>
-         <input
+        <form className="username" onSubmit={handleSubmit}>
+         <input 
             type='text' 
-            placeholder='Username' 
+            placeholder='username:' 
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           ></input>
-          <input
+          <input className="password"
             type='password' 
-            placeholder='Password'
+            placeholder='password:'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
            ></input>
-           <button type='submit'>Register</button>
+           <button className="loginBtn" type='submit'>Register</button>
         </form>
         <Link to="/Login">Already have an account? Log In</Link>
         {/* <button 
