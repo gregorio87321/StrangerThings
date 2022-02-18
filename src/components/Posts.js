@@ -53,10 +53,13 @@ const Posts = (props) => {
 
   return (
     <div>
-      <div className="postTitle"style={styles.searchContainer}>
-        <h2>Posts</h2>
+      <div>
+        <h1 className="postTitle">Posts</h1>
+      </div>
+      <div style={styles.searchContainer}>
+        
         <input className="searchBar"
-          style={styles.searchInput}
+          // style={styles.searchInput}
           type="text"
           placeholder="search for posts"
           value={searchTerm}
@@ -64,7 +67,10 @@ const Posts = (props) => {
             setSearchTerm(event.target.value);
           }}
         ></input>
+        
       </div>
+      {/* <br></br> */}
+        <hr></hr>
 
       {userData.username && !showNewPostForm ? (
         <button
@@ -89,7 +95,7 @@ const Posts = (props) => {
           <div className="card" key={post._id}>
              <h2 >{post.title}</h2>
 
-            <span className="card-header">{post.description}</span>
+            <span className="card-text">{post.description}</span>
             {/* <br></br> */}
             <span className="card-header">Price: {post.price}</span>
             {/* <br></br> */}
