@@ -70,7 +70,7 @@ const App = () => {
     <div>
       <div>
 
-        <h1 class="font-effect-shadow-multiple"> Stranger's Things </h1>
+        <h1 class="font-effect-neon"> Stranger's Things </h1>
         <>
           {!token ? (
             <Link to="/login">Log In</Link>

@@ -81,7 +81,15 @@ const Posts = (props) => {
         >
           New Post
         </button>
-      ) : null}
+      ) : 
+      <button
+      onClick={(event) => {
+        event.preventDefault();
+        setShowNewPostForm(false);
+      }}
+    >
+      All Posts
+    </button>}
       {showNewPostForm ? (
         <NewPostForm
           token={token}

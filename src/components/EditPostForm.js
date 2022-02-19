@@ -3,10 +3,10 @@ import React, { useState } from "react";
 const EditPostForm = ({ editPost, setEditPost, onEdit }) => {
   return (
     <>
-      <h2 style={{ display: "flex", justifyContent: "center" }}>Edit Post</h2>
+      <h2 style={{ display: "flex", justifyContent: "center", paddingTop:"15px" }}>Edit Post</h2>
       <div className="newPost">
         <form className="newPost" onSubmit={onEdit}>
-          <input
+          <input className="newPostInput"
             type="text"
             placeholder="title"
             onChange={(event) => {
@@ -14,7 +14,7 @@ const EditPostForm = ({ editPost, setEditPost, onEdit }) => {
             }}
             value={editPost.title}
           ></input>
-          <input
+          <input className="newPostInput"
             type="text"
             placeholder="description"
             onChange={(event) => {
@@ -22,7 +22,7 @@ const EditPostForm = ({ editPost, setEditPost, onEdit }) => {
             }}
             value={editPost.description}
           ></input>
-          <input
+          <input className="newPostInput"
             type="number"
             placeholder="price"
             onChange={(event) => {
@@ -30,7 +30,7 @@ const EditPostForm = ({ editPost, setEditPost, onEdit }) => {
             }}
             value={editPost.price}
           ></input>
-          <input
+          <input className="newPostInput"
             type="text"
             placeholder="location"
             onChange={(event) => {
@@ -48,7 +48,7 @@ const EditPostForm = ({ editPost, setEditPost, onEdit }) => {
               value={editPost.willDeliver}
             ></input>
           </label>
-          <button type="submit">Edit Post</button>
+          <button className="editBtn" type="submit">Edit</button>
         </form>
       </div>
     </>

@@ -70,28 +70,28 @@ const NewPostForm = ({ token, setPosts, posts, action, setShowNewPostForm  }) =>
 
   return (
     <>
-      <h2 className="newPostHead">{title}</h2>
+      <h2 style={{ display: "flex", justifyContent: "center", paddingTop:"15px" }}>{title}</h2>
       <div className="newPost">
         <form className="newPost" onSubmit={handleSubmit}>
-          <input
+          <input className="newPostInput"
             type="text"
             placeholder="title"
             onChange={handlePostFieldChange("title")}
             value={newPost.title}
           ></input>
-          <input
+          <input className="newPostInput"
             type="text"
             placeholder="description"
             onChange={handlePostFieldChange("description")}
             value={newPost.description}
           ></input>
-          <input
+          <input className="newPostInput"
             type="number"
             placeholder="price"
             onChange={handlePostFieldChange("price")}
             value={newPost.price}
           ></input>
-          <input
+          <input className="newPostInput"
             type="text"
             placeholder="location"
             onChange={handlePostFieldChange("location")}
@@ -105,7 +105,7 @@ const NewPostForm = ({ token, setPosts, posts, action, setShowNewPostForm  }) =>
               value={newPost.willDeliver}
             ></input>
           </label>
-          <button>{title}</button>
+          <button className="editBtn">Add</button>
         </form>
       </div>
     </>
