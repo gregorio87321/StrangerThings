@@ -4,7 +4,6 @@ import { callApi } from "../api";
 import { Message, Posts } from ".";
 
 const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
-
   const history = useHistory();
 
   useEffect(async () => {
@@ -40,7 +39,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
         {userData.posts &&
           activePost.map((post) => (
             <div className="card" key={post._id}>
-              <h2>{post.title}</h2>
+              <h2 className="cardTitle">{post.title}</h2>
               <span className="card-text">{post.description}</span>
 
               <span className="card-header">Price: {post.price}</span>
@@ -57,7 +56,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                 onClick={() => history.push(`/posts/${post._id}`)}
               >
                 {" "}
-                view 
+                view
               </button>
 
               {post.messages.length
@@ -76,17 +75,17 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
           <h2>My Messages</h2>
           {userData.messages
             ? userData.messages.map((message) => (
-                <div key={message._id}>
+                <div className="card"  key={message._id}>
                   <h3 className="messages"></h3>
-                  <p>Title: {message.post.title}</p>
-                  <p>From User: {message.fromUser.username}</p>
-                  <p>Content: {message.content}</p>
+                  <p className="card-header">Title: {message.post.title}</p>
+                  <p className="card-header">From User: {message.fromUser.username}</p>
+                  <p className="card-header">Message: {message.content}</p>
                   <button
                     className="btn-info"
                     onClick={() => history.push(`/posts/${message.post._id}`)}
                   >
                     {" "}
-                    view 
+                    view
                   </button>
 
                   <br></br>

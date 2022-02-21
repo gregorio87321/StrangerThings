@@ -14,7 +14,7 @@ import {
 import { useState, useEffect } from "react";
 import { callApi } from "./api";
 import { useHistory } from "react-router-dom";
-import "./style.css" 
+import "./style.css";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -70,7 +70,6 @@ const App = () => {
   return (
     <div>
       <div>
-
         <h1 className="font-effect-neon"> Stranger's Things </h1>
         <>
           {!token ? (
@@ -106,47 +105,44 @@ const App = () => {
         </Link>
       </div>
       <ErrorBoundary>
-      <Switch>
+        <Switch>
+          <Route path="/login">
+            <Login action="login" setToken={setToken} />
+          </Route>
+          <Route path="/register">
+            <Register action="register" setToken={setToken} />
+          </Route>
+          <Route exact path="/posts">
+            <Posts
+              token={token}
+              posts={posts}
+              userData={userData}
+              setPosts={setPosts}
+              fetchPosts={fetchPosts}
+            />
+          </Route>
+          <Route exact path="/posts/:postId">
+            <SinglePost
+              posts={posts}
+              token={token}
+              userData={userData}
+              setPosts={setPosts}
+            />
+          </Route>
+          <Route path="/profile">
+            <Profile
+              userData={userData}
+              fetchUserData={fetchUserData}
+              setUserData={setUserData}
+              token={token}
+              posts={posts}
+            />
+          </Route>
 
-        <Route path="/login">
-          <Login action="login" setToken={setToken} />
-        </Route>
-        <Route path="/register">
-          <Register action="register" setToken={setToken} />
-        </Route>
-        <Route exact path="/posts">
-          <Posts
-            token={token}
-            posts={posts}
-            userData={userData}
-            setPosts={setPosts}
-            fetchPosts={fetchPosts}
-          />
-        </Route>
-        <Route exact path="/posts/:postId">
-          <SinglePost
-            posts={posts}
-            token={token}
-            userData={userData}
-            setPosts={setPosts}
-          />
-        </Route>
-        <Route path="/profile">
-          <Profile
-            userData={userData}
-            fetchUserData={fetchUserData}
-            setUserData={setUserData}
-            token={token}
-            posts={posts}
-            
-          />
-        </Route>
-
-        <Route path="/:random">
-          <p>Hello</p>
-           </Route>
-         
-      </Switch>
+          <Route path="/:random">
+            <p>Whoops, something went wrong.</p>
+          </Route>
+        </Switch>
       </ErrorBoundary>
     </div>
   );
