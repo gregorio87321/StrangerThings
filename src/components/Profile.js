@@ -4,9 +4,7 @@ import { callApi } from "../api";
 import { Message, Posts } from ".";
 
 const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
-  // do I need this?
-  // const { postId } = useParams();
-  // const post = posts.find((post) => postId === post._id);
+
   const history = useHistory();
 
   useEffect(async () => {

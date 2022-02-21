@@ -75,25 +75,25 @@ const NewPostForm = ({ token, setPosts, posts, action, setShowNewPostForm  }) =>
         <form className="newPost" onSubmit={handleSubmit}>
           <input className="newPostInput"
             type="text"
-            placeholder="title"
+            placeholder="title:"
             onChange={handlePostFieldChange("title")}
             value={newPost.title}
           ></input>
           <input className="newPostInput"
             type="text"
-            placeholder="description"
+            placeholder="description:"
             onChange={handlePostFieldChange("description")}
             value={newPost.description}
           ></input>
           <input className="newPostInput"
-            type="number"
-            placeholder="price"
+            type="text"
+            placeholder="price:"
             onChange={handlePostFieldChange("price")}
             value={newPost.price}
           ></input>
           <input className="newPostInput"
             type="text"
-            placeholder="location"
+            placeholder="location:"
             onChange={handlePostFieldChange("location")}
             value={newPost.location}
           ></input>

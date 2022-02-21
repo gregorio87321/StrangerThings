@@ -9,6 +9,7 @@ import {
   SinglePost,
   EditPostForm,
   Profile,
+  ErrorBoundary,
 } from "./components";
 import { useState, useEffect } from "react";
 import { callApi } from "./api";
@@ -70,7 +71,7 @@ const App = () => {
     <div>
       <div>
 
-        <h1 class="font-effect-neon"> Stranger's Things </h1>
+        <h1 className="font-effect-neon"> Stranger's Things </h1>
         <>
           {!token ? (
             <Link to="/login">Log In</Link>
@@ -104,7 +105,9 @@ const App = () => {
           Posts
         </Link>
       </div>
+      <ErrorBoundary>
       <Switch>
+
         <Route path="/login">
           <Login action="login" setToken={setToken} />
         </Route>
@@ -138,7 +141,13 @@ const App = () => {
             
           />
         </Route>
+
+        <Route path="/:random">
+          <p>Hello</p>
+           </Route>
+         
       </Switch>
+      </ErrorBoundary>
     </div>
   );
 };

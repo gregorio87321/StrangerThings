@@ -23,7 +23,7 @@ const EditPostForm = ({ editPost, setEditPost, onEdit }) => {
             value={editPost.description}
           ></input>
           <input className="newPostInput"
-            type="number"
+            type="text"
             placeholder="price"
             onChange={(event) => {
               setEditPost({ ...editPost, price: event.target.value });

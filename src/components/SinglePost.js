@@ -19,9 +19,9 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
     message: "",
   });
 
-  const onDelete = (event) => {
+  const onDelete = async (event) => {
     event.preventDefault();
-    callApi({
+    await callApi({
       method: "DELETE",
       url: `/posts/${postId}`,
       token,
