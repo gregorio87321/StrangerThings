@@ -35,7 +35,9 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
           {"Welcome back "}
           {userData.username}!{" "}
         </h2> */}
-        <h2 style={{ display: "flex", justifyContent: "center", paddingTop:"15px" }}>My Posts</h2>
+        <h2 style={{ display: "flex", justifyContent: "center", marginTop:"60px"  }}>My Posts</h2>
+        <br></br>
+        <hr></hr>
         {userData.posts &&
           activePost.map((post) => (
             <div className="card" key={post._id}>
