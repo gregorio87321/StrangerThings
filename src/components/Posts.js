@@ -103,7 +103,7 @@ const Posts = (props) => {
           <div className="card" key={post._id}>
              <h2 className="cardTitle">{post.title}</h2>
                
-            <span className="card-text">{post.description}</span>
+            <span className="card-text" style={{ display: "flex", justifyContent: "center"}}>{post.description}</span>
             {/* <br></br> */}
             <span className="card-header">Price: {post.price}</span>
             {/* <br></br> */}

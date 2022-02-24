@@ -86,7 +86,7 @@ const NewPostForm = ({ token, setPosts, posts, action, setShowNewPostForm  }) =>
             value={newPost.description}
           ></input>
           <input className="newPostInput"
-            type="number"
+            type="text"
             placeholder="price:"
             onChange={handlePostFieldChange("price")}
             value={newPost.price}

@@ -53,8 +53,8 @@ const SinglePost = ({ posts, token, setPosts, userData }) => {
     <>
       {post ? (
         <div className="card">
-          <h3>{post.title}</h3>
-          <p>Posted by: {post.author.username}</p>
+          <h3 className="cardTitle">{post.title}</h3>
+          <p  style={{ display: "flex", justifyContent: "center"}}>Posted by: {post.author.username}</p>
           <p className="card-header">Price: {post.price}</p>
           <p className="card-header">Location: {post.location}</p>
           <p className="card-header">

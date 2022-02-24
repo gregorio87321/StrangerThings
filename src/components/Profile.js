@@ -35,12 +35,12 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
           {"Welcome back "}
           {userData.username}!{" "}
         </h2> */}
-        <h2>My Posts</h2>
+        <h2 style={{ display: "flex", justifyContent: "center", paddingTop:"15px" }}>My Posts</h2>
         {userData.posts &&
           activePost.map((post) => (
             <div className="card" key={post._id}>
               <h2 className="cardTitle">{post.title}</h2>
-              <span className="card-text">{post.description}</span>
+              <span className="card-text"  style={{ display: "flex", justifyContent: "center"}}>{post.description}</span>
 
               <span className="card-header">Price: {post.price}</span>
 
@@ -72,14 +72,19 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
           ))}
         <div>
           <br></br>
-          <h2>My Messages</h2>
+          <hr></hr>
+          <h2 style={{ display: "flex", justifyContent: "center", marginTop:"60px" }}>My Messages</h2>
+          <br></br>
+          <hr></hr>
           {userData.messages
             ? userData.messages.map((message) => (
                 <div className="card"  key={message._id}>
                   <h3 className="messages"></h3>
-                  <p className="card-header">Title: {message.post.title}</p>
+                  <h2 className="cardTitle">{message.post.title}</h2>
                   <p className="card-header">From User: {message.fromUser.username}</p>
                   <p className="card-header">Message: {message.content}</p>
+                  <br></br>
+                  
                   <button
                     className="btn-info"
                     onClick={() => history.push(`/posts/${message.post._id}`)}
@@ -88,7 +93,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                     view
                   </button>
 
-                  <br></br>
+                  {/* <br></br> */}
                 </div>
               ))
             : null}
