@@ -61,7 +61,7 @@ const Profile = ({ userData, setUserData, fetchUserData, token, posts }) => {
                 view
               </button>
 
-              {post.messages.length
+              {post.messages.length 
                 ? post.messages.map((message) => (
                     <p key={message._id}>
                       Message from {message.fromUser.username}:{" "}
